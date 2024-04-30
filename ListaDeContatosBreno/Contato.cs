@@ -38,13 +38,13 @@ namespace ListaDeContatosBreno
             }
             set
             {
-                if (value.Length == 13)
+                if (value.Length == 11)
                 {
                     telefone = value;
                 }
                 else
                 {
-                    telefone = "(00) 00000-0000";
+                    telefone = "00000000000";
                 }
             }
         }
@@ -53,7 +53,7 @@ namespace ListaDeContatosBreno
         {
             Nome = "Cláudio";
             Sobrenome = "Genésio II";
-            Telefone = "(11) 95555-6666";
+            Telefone = "11955556666";
         }
         //Sobrecarga do método construtor da classe Contato.
         public Contato(string nome, string sobrenome, string telefone)
@@ -72,8 +72,9 @@ namespace ListaDeContatosBreno
             saida += String.Format("{0} {1} ", Nome, Sobrenome);
             saida += String.Format("({0}) {1}-{2}", 
                 Telefone.Substring(0,2), 
-                Telefone.Substring(3,5),
+                Telefone.Substring(2,5),
                 Telefone.Substring(7,4));
+
                 return saida;
         }
     }
