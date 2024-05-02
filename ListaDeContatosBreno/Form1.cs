@@ -45,9 +45,31 @@ namespace ListaDeContatosBreno
 
             ListaDeContatos = new Contato[Convert.ToInt32(ler.ReadLine())];
 
-
+            for (int x = 0; x < ListaDeContatos.Length; x++)
+            {
+                ListaDeContatos[x] = new Contato();
+                ListaDeContatos[x].Nome = ler.ReadLine();
+                ListaDeContatos[x].Sobrenome = ler.ReadLine();
+                ListaDeContatos[x].Telefone = ler.ReadLine();
+            }
+            ler.Close();
         }
+        
+        private void Exibir()
+        {
+            listBoxContatos.Items.Clear();
 
+            for (int x = 0; x <= ListaDeContatos.Length; x++)
+            {
+                listBoxContatos.Items.Add(ListaDeContatos[x].ToString());
+            }
+        }
+        private void LimparCampos()
+        {
+            textBoxNome.Text = String.Empty;
+            textBoxSobrenome.Text = String.Empty;
+            textBoxTelefone.Text = String.Empty;
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -66,7 +88,8 @@ namespace ListaDeContatosBreno
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Ler();
+            Exibir();
         }
 
         private void buttonIncluirContato_Click(object sender, EventArgs e)
@@ -79,6 +102,11 @@ namespace ListaDeContatosBreno
             contato.Telefone = textBoxTelefone.Text;
 
             listBoxContatos.Items.Add(contato.ToString());
+
+            Escrever(contato);
+            Ler();
+            Exibir();
+            LimparCampos();
         }
     }
 }
